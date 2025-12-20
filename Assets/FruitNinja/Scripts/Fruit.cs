@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Fruit : MonoBehaviour
 {
+    [SerializeField] private AudioClip fruitSoundClip;
     public GameObject whole;
     public GameObject sliced;
 
@@ -32,6 +33,11 @@ public class Fruit : MonoBehaviour
 
         if (hasBeenSliced) return;
         hasBeenSliced = true;
+
+        if (SfxManager.instance != null && fruitSoundClip != null)
+        {
+            SfxManager.instance.PlaySoundFXClip(fruitSoundClip, transform, 1f);
+        }
 
         if (entangledPartner != null && entangledPartner.gameObject.activeInHierarchy)
         {
@@ -67,7 +73,7 @@ public class Fruit : MonoBehaviour
         else if (fruitType == 1)
         {
             int chanceEngtangle = Random.Range(0, 10);
-            if (chanceEngtangle < 2)
+            if (chanceEngtangle < 5)
             {
                 sliced.SetActive(true);
                 fruitCollider.enabled = false;
@@ -123,7 +129,6 @@ public class Fruit : MonoBehaviour
             {
                 sliced.SetActive(true);
                 fruitCollider.enabled = false;
-                juiceParticleEffect.Play();
             }
             else
             {
@@ -131,15 +136,15 @@ public class Fruit : MonoBehaviour
                                                             position[1]-10, position[1]+10,
                                                             position[2], position[2], 6f, 10f, false, true);
                 
-                Rigidbody[] tunnel = sliced.GetComponentsInChildren<Rigidbody>();
-
-                foreach (Rigidbody slice in tunnel)
-                {
-                    fruitCollider.enabled = false;
-                    Destroy(fruitRigidbody);
-                    whole.SetActive(false);
-                    sliced.SetActive(false);
-                }
+            fruitCollider.enabled = false;
+            whole.SetActive(false);
+            sliced.SetActive(false);
+            
+            
+            if (fruitRigidbody != null)
+            {
+                Destroy(fruitRigidbody);
+            }
             }
         }
     }

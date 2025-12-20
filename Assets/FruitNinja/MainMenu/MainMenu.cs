@@ -12,4 +12,12 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         SceneManager.LoadScene("Menu");
     }
+    public void ReadTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+    public void ViewOptions()
+    {
+        SceneManager.LoadScene("Options");
+    }
 }

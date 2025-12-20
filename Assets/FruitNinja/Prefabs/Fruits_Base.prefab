@@ -97,8 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d3e76a529d7483fa56605a2681ab2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fruit
+  fruitSoundClip: {fileID: 8300000, guid: 934cb76b257ea48b8bae76c4ce6ddcd7, type: 3}
   whole: {fileID: 2698530578609930387}
   sliced: {fileID: 3721023632638391842}
+  points: 1
+  fruitType: 0
+  isEntangle: 0
+  isTunnel: 0
+  entangledPartner: {fileID: 0}
 --- !u!1 &4033326433076912465
 GameObject:
   m_ObjectHideFlags: 0

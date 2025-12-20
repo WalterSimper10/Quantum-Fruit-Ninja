@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Image[] lifeImages;
+    public int maxLives = 3;
+    public int currentLives;
     public Text scoreText;
     public Image FadeImage;
 
@@ -30,6 +33,12 @@ public class GameManager : MonoBehaviour
         score = 0;
         scoreText.text = score.ToString();
         Time.timeScale =1f;
+
+        currentLives = maxLives;
+        for (int i=0; i<lifeImages.Length; i++)
+        {
+            lifeImages[i].enabled = true;
+        }
 
         ClearScene();
     }
@@ -59,6 +68,20 @@ public class GameManager : MonoBehaviour
         spawner.enabled = true;
 
         StartCoroutine(ExplodeSequence());
+    }
+
+    public void LoseLife()
+    {
+        currentLives--;
+        if (currentLives >= 0 && currentLives < lifeImages.Length)
+        {
+            lifeImages[currentLives].enabled = false;
+        }
+
+        if (currentLives <= 0)
+        {
+            Explode();
+        }
     }
     private IEnumerator ExplodeSequence()
     {

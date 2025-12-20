@@ -885,7 +885,6 @@ MonoBehaviour:
   minForce: 18
   maxForce: 22
   maxLifetime: 5
-  forceSpawn: 0
 --- !u!4 &1162287579
 Transform:
   m_ObjectHideFlags: 0

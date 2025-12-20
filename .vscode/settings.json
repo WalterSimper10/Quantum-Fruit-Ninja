@@ -67,6 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "My project.slnx",
-    "git.ignoreLimitWarning": true
+    "dotnet.defaultSolution": "My project (1).slnx"
 }
